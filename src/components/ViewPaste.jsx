@@ -10,23 +10,20 @@ const ViewPaste = () => {
   console.log("Final Paste", paste);
 
   return (
-    <div>
-      <div className="flex flex-row gap-7 place-content-between">
+    <div className="h-screen w-full">
+      <div className="w-[70%] sm:w-[50%] m-auto mt-6">
         <input
-          className="p-2 rounded-2xl mt-2 w-[500px] pl-4 bg-gray-300 dark:bg-[#1a1a1a]"
+          className="w-full p-2 rounded-2xl mt-2 bg-gray-300 dark:bg-[#1a1a1a]"
           type="text"
           placeholder="Enter Title Here"
           disabled
           value={paste.title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        {/* <button className="p-2 rounded-2xl mt-2" onClick={createPaste}>
-          {pasteId ? "Update Paste" : "Create Paste"}
-        </button> */}
       </div>
-      <div className="mt-4">
+      <div className="w-[70%] sm:w-[50%] m-auto">
         <textarea
-          className="rounded-2xl mt-4 min-w-[500px] p-4 bg-gray-300 dark:bg-[#1a1a1a]"
+          className="w-[100%] rounded-2xl mt-4 p-4 bg-gray-300 dark:bg-[#1a1a1a]"
           value={paste.content}
           disabled
           placeholder="Enter Conent Here"

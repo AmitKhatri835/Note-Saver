@@ -56,17 +56,17 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-screen m-auto dark:text-white pt-7 bg-white dark:bg-[#242424]">
-        <div className="w-[300px] sm:w-[500px] m-auto">
-          <div className="w-8 rounded-full bg-gray-300 dark:bg-zinc-600 p-2 absolute right-10">
-            {theme === "dark" ? (
-              <MdWbSunny onClick={toggleTheme} />
-            ) : (
-              <BsMoonStarsFill onClick={toggleTheme} />
-            )}
-          </div>
-          <RouterProvider router={router} />
+      <div className="w-full m-auto dark:text-white pt-7 bg-white dark:bg-[#242424]">
+        {/* <div className="w-full m-auto"> */}
+        <div className="w-8 rounded-full bg-gray-300 dark:bg-zinc-600 p-2 absolute right-10">
+          {theme === "dark" ? (
+            <MdWbSunny onClick={toggleTheme} />
+          ) : (
+            <BsMoonStarsFill onClick={toggleTheme} />
+          )}
         </div>
+        <RouterProvider router={router} />
+        {/* </div> */}
       </div>
     </>
   );

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { addToPastes, updateToPastes } from "../redux/pasteSlice";
-import toast from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
+// import "react-toastify/dist/React"
 
 const Home = () => {
   const [title, setTitle] = useState("");
@@ -25,8 +26,10 @@ const Home = () => {
       dispatch(updateToPastes(paste));
     } else {
       //create
-      if (title === "" && value === "") {
-        toast.error("Tilte Or Content is Missing!");
+      if (title === "" || value === "") {
+        toast.error("Tilte Or Content is Missing!", {
+          position: "bottom-center",
+        });
       } else {
         dispatch(addToPastes(paste));
       }
@@ -47,8 +50,8 @@ const Home = () => {
   }, [pasteId]);
 
   return (
-    <div>
-      <div className="w-[300px] sm:w-[500px] m-auto flex justify-between items-center mt-6">
+    <div className="h-screen m-auto">
+      <div className="w-[70%] sm:w-[50%] m-auto flex justify-between items-center mt-6">
         <input
           className="p-2 rounded-2xl mt-2 w-[70%] sm:w-[80%] bg-gray-300 dark:bg-[#1a1a1a]"
           type="text"
@@ -56,13 +59,14 @@ const Home = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <button onClick={createPaste} classN>
+        <button onClick={createPaste}>
           {pasteId ? "Update" : "Create"}
+          <Toaster />
         </button>
       </div>
-      <div className="mt-4">
+      <div className="w-[70%] sm:w-[50%] m-auto mt-4">
         <textarea
-          className="w-[300px] sm:w-[500px] rounded-2xl mt-4 p-4 bg-gray-300 dark:bg-[#1a1a1a]"
+          className="w-[100%] sm:w-[100%] rounded-2xl mt-4 p-4 bg-gray-300 dark:bg-[#1a1a1a]"
           value={value}
           placeholder="Enter Conent Here"
           onChange={(e) => setValue(e.target.value)}
